@@ -8,22 +8,34 @@ class SWC:
 
     def get_last_version(self):
         url = ('https://raw.githubusercontent.com/SmartContractSecurity/SWC-registry/master/export/swc-definition.json')
-        r = urllib.request.urlopen(url)
-        response = json.loads(r.read().decode(r.info().get_param('charset') or 'utf-8'))
+        response = urllib.request.urlopen(url)
+        converted_response = r.read()
+        decoded_response_info = converted_response.decode(r.info().get_param('charset') or 'utf-8')
+        response = json.loads(decoded_response_info)
         return response
 
-    def get_title(self):
+    def get_content(self):
         entries = self.get_last_version()
-        return entries[self.swc_id]['content']['Title']
+        current_entry = entries.get([self.swc_id], {})
+        content = current_entry.get('content', {})
+        return content
+
+    def get_title(self):
+        content = self.get_content()
+        title = content.get('Title', {})
+        return title
 
     def get_relationships(self):
-        entries = self.get_last_version()
-        return entries[self.swc_id]['content']['Relationships']
+        content = self.get_content()
+        relationships = content.get('Relationships', {})
+        return relationships
 
     def get_description(self):
-        entries = self.get_last_version()
-        return entries[self.swc_id]['content']['Description']
+        content = self.get_content()
+        description = content.get('Description', {})
+        return description
 
     def get_remediation(self):
-        entries = self.get_last_version()
-        return entries[self.swc_id]['content']['Remediation']
+        content = self.get_content()
+        remediation = content.get('Remediation', {})
+        return remediation

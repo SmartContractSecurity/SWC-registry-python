@@ -1,7 +1,7 @@
 import setuptools
 setuptools.setup(
     name="swcregistrypython",
-    version="0.1.5",
+    version="0.1.1",
     url="https://github.com/SmartContractSecurity/SWC-registry-python",
     author="ConsenSys",
     author_email="ersul4ik@gmail.com",

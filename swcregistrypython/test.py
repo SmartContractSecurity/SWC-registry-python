@@ -7,7 +7,7 @@ from get_entry_info import SWC
 
 class TestMethods(unittest.TestCase):
     def setUp(self):
-        with open('swc-definition.json') as f:
+        with open('swcregistrypython/swc-definition.json') as f:
             self.response = json.load(f)
         self.swc = SWC('SWC-100')
         self.object = {

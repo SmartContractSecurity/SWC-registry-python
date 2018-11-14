@@ -9,14 +9,14 @@ class SWC:
     def get_last_version(self):
         url = ('https://raw.githubusercontent.com/SmartContractSecurity/SWC-registry/master/export/swc-definition.json')
         response = urllib.request.urlopen(url)
-        converted_response = r.read()
-        decoded_response_info = converted_response.decode(r.info().get_param('charset') or 'utf-8')
+        converted_response = response.read()
+        decoded_response_info = converted_response.decode(response.info().get_param('charset') or 'utf-8')
         response = json.loads(decoded_response_info)
         return response
 
     def get_content(self):
         entries = self.get_last_version()
-        current_entry = entries.get([self.swc_id], {})
+        current_entry = entries.get(self.swc_id, {})
         content = current_entry.get('content', {})
         return content
 

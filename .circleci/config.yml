@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: python:3.5
+    working_directory: /code
+    steps:
+        - checkout
+        - run:
+            name: Hello world
+            command: echo "Hello world"

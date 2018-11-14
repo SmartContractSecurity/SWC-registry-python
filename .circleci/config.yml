@@ -8,4 +8,5 @@ jobs:
         - checkout
         - run:
             name: Tests runner
+            command: ls
             command: python test.py

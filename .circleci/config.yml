@@ -7,5 +7,5 @@ jobs:
     steps:
         - checkout
         - run:
-            name: Hello world
-            command: echo "Hello world"
+            name: Tests runner
+            command: python test.py

@@ -9,6 +9,5 @@ jobs:
             name: Tests runner
             working_directory: swcregistrypython/
             command: |
-              pip install -r requirements.txt
-              cd swcregistrypython
+              pip install -r ../requirements.txt
               python swcregistrypython/test.py

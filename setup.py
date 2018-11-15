@@ -9,7 +9,7 @@ setuptools.setup(
     long_description=open('README.rst').read(),
     packages=['swcregistrypython'],
     install_requires=[
-        'requests==2.20.1'
+        'requests==2.20.1',
       ],
     classifiers=[
         'Programming Language :: Python',

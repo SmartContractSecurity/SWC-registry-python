@@ -7,7 +7,7 @@ from get_entry_info import SWC
 
 class TestMethods(unittest.TestCase):
     def setUp(self):
-        with open('swcregistrypython/swc-definition.json') as f:
+        with open('swc-definition.json') as f:
             self.object = json.load(f)
         self.swc = SWC('SWC-100')
         self.dd = {
@@ -18,20 +18,20 @@ class TestMethods(unittest.TestCase):
                       }
      
     def test_get_title(self):
-        self.swc.get_content = MagicMock(return_value=self.object)
-        self.assertEqual(self.swc.get_title(), self.object['Title'])
+        self.swc.get_content = MagicMock(return_value=self.object['SWC-100']['content'])
+        self.assertEqual(self.swc.get_title(), self.object['SWC-100']['content']['Title'])
 
     def test_get_relationships(self):
-        self.swc.get_content = MagicMock(return_value=self.object)
-        self.assertEqual(self.swc.get_relationships(), self.object['Relationships'])
+        self.swc.get_content = MagicMock(return_value=self.object['SWC-100']['content'])
+        self.assertEqual(self.swc.get_relationships(), self.object['SWC-100']['content']['Relationships'])
 
     def test_get_description(self):
-        self.swc.get_content = MagicMock(return_value=self.object)
-        self.assertEqual(self.swc.get_description(), self.object['Description'])
+        self.swc.get_content = MagicMock(return_value=self.object['SWC-100']['content'])
+        self.assertEqual(self.swc.get_description(), self.object['SWC-100']['content']['Description'])
     
     def test_get_remediation(self):
-        self.swc.get_content = MagicMock(return_value=self.object)
-        self.assertEqual(self.swc.get_remediation(), self.object['Remediation'])
+        self.swc.get_content = MagicMock(return_value=self.object['SWC-100']['content'])
+        self.assertEqual(self.swc.get_remediation(), self.object['SWC-100']['content']['Remediation'])
 
         
 if __name__ == '__main__':

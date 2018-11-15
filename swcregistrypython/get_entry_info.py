@@ -1,4 +1,4 @@
-import urllib.request
+import requests
 import json
 
 
@@ -15,13 +15,10 @@ class SWC:
     def get_last_version(self):
         try:
             url = ('https://raw.githubusercontent.com/SmartContractSecurity/SWC-registry/master/export/swc-definition.json')
-            response = urllib.request.urlopen(url)
-            converted_response = response.read()
-            decoded_response_info = converted_response.decode(response.info().get_param('charset') or 'utf-8')
-            response = json.loads(decoded_response_info)
+            response = requests.get(url).json()
             with open(self.path_file_content, 'w') as outputfile:
-                json.dump(data, outputfile)
-        except (urllib.error.HTTPError, urllib.error.URLError) as e:
+                json.dump(response, outputfile)
+        except requests.exceptions.RequestException:
             response = self.get_content_by_file()
         return response
 

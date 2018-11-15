@@ -3,9 +3,11 @@ jobs:
   build:
     docker:
       - image: python:3.5
-    working_directory: /swcregistrypython
     steps:
         - checkout
         - run:
             name: Tests runner
-            command: python swcregistrypython/test.py
+            working_directory: swcregistrypython/
+            command: |
+              pip install -r ../requirements.txt
+              python test.py

@@ -1,17 +1,25 @@
-import urllib.request
+import requests
 import json
 
 
 class SWC:
     def __init__(self, swc_id):
         self.swc_id = swc_id
+        self.path_file_content = 'swc-definition.json'
+
+    def get_content_by_file(self):
+        with open(self.path_file_content, 'r') as f:
+            response = json.load(f)
+        return response
 
     def get_last_version(self):
-        url = ('https://raw.githubusercontent.com/SmartContractSecurity/SWC-registry/master/export/swc-definition.json')
-        response = urllib.request.urlopen(url)
-        converted_response = response.read()
-        decoded_response_info = converted_response.decode(response.info().get_param('charset') or 'utf-8')
-        response = json.loads(decoded_response_info)
+        try:
+            url = ('https://raw.githubusercontent.com/SmartContractSecurity/SWC-registry/master/export/swc-definition.json')
+            response = requests.get(url).json()
+            with open(self.path_file_content, 'w') as outputfile:
+                json.dump(response, outputfile)
+        except requests.exceptions.RequestException:
+            response = self.get_content_by_file()
         return response
 
     def get_content(self):

@@ -10,4 +10,4 @@ jobs:
             working_directory: swcregistrypython/
             command: |
               pip install -r ../requirements.txt
-              python swcregistrypython/test.py
+              python test.py

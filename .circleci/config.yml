@@ -8,4 +8,6 @@ jobs:
         - checkout
         - run:
             name: Tests runner
-            command: python swcregistrypython/test.py
+            command: |
+              sudo pip install -r requirements.txt
+              python swcregistrypython/test.py

@@ -7,7 +7,8 @@ jobs:
         - checkout
         - run:
             name: Tests runner
+            working_directory: swcregistrypython/
             command: |
               pip install -r requirements.txt
-              cd swcregistrypython/
+              cd swcregistrypython
               python swcregistrypython/test.py

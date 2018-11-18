@@ -7,11 +7,13 @@ class SWC:
         self.swc_id = swc_id
         self.path_file_content = 'swc-definition.json'
 
+    @property
     def get_content_by_file(self):
         with open(self.path_file_content, 'r') as f:
             response = json.load(f)
         return response
 
+    @property
     def get_last_version(self):
         try:
             url = ('https://raw.githubusercontent.com/SmartContractSecurity/SWC-registry/master/export/swc-definition.json')
@@ -19,31 +21,40 @@ class SWC:
             with open(self.path_file_content, 'w') as outputfile:
                 json.dump(response, outputfile)
         except requests.exceptions.RequestException:
-            response = self.get_content_by_file()
+            response = self.get_content_by_file
         return response
 
-    def get_content(self):
-        entries = self.get_last_version()
+    @property
+    def content(self):
+        entries = self.get_last_version
         current_entry = entries.get(self.swc_id, {})
         content = current_entry.get('content', {})
         return content
 
-    def get_title(self):
-        content = self.get_content()
+    @content.setter
+    def content(self, value):
+        self._content = value
+
+    @property
+    def title(self):
+        content = self.content
         title = content.get('Title', {})
         return title
 
-    def get_relationships(self):
-        content = self.get_content()
+    @property
+    def relationships(self):
+        content = self.content
         relationships = content.get('Relationships', {})
         return relationships
 
-    def get_description(self):
-        content = self.get_content()
+    @property
+    def description(self):
+        content = self.content
         description = content.get('Description', {})
         return description
 
-    def get_remediation(self):
-        content = self.get_content()
+    @property
+    def remediation(self):
+        content = self.content
         remediation = content.get('Remediation', {})
         return remediation

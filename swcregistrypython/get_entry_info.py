@@ -26,7 +26,7 @@ class SWC:
 
     @property
     def content(self):
-        entries = self.get_last_version
+        entries = self.get_content_by_file
         current_entry = entries.get(self.swc_id, {})
         content = current_entry.get('content', {})
         return content

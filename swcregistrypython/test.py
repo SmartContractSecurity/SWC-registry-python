@@ -27,6 +27,15 @@ class TestMethods(unittest.TestCase):
         self.swc.content = MagicMock(return_value=self.object['SWC-100']['content'])
         self.assertEqual(self.swc.remediation, self.object['SWC-100']['content']['Remediation'])
 
+    def test_get_last_version(self):
+        self.object['SWC-100']['content']['Title'] = "Test"
+        with open('swc-definition.json', 'w') as f:
+            json.dump(self.object, f)
+        self.assertEqual(self.swc.title, "Test")
         
+        self.swc.get_last_version
+        self.assertNotEqual(self.swc.title, "Test")
+
+
 if __name__ == '__main__':
     unittest.main()

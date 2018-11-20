@@ -1,3 +1,4 @@
+import os
 import requests
 import json
 
@@ -5,7 +6,7 @@ import json
 class SWC:
     def __init__(self, swc_id):
         self.swc_id = swc_id
-        self.path_file_content = 'swc-definition.json'
+        self.path_file_content = os.path.join(os.path.dirname(__file__),'swc-definition.json')
 
     @property
     def get_content_by_file(self):
@@ -22,7 +23,7 @@ class SWC:
                 json.dump(response, outputfile)
         except requests.exceptions.RequestException:
             response = self.get_content_by_file
-        return response
+        return "swc-definition.json - updated"
 
     @property
     def content(self):

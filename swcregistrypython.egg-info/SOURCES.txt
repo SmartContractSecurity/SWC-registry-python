@@ -1,0 +1,12 @@
+MANIFEST.in
+README.rst
+setup.py
+swcregistrypython/__init__.py
+swcregistrypython/get_entry_info.py
+swcregistrypython/swc-definition.json
+swcregistrypython/test.py
+swcregistrypython.egg-info/PKG-INFO
+swcregistrypython.egg-info/SOURCES.txt
+swcregistrypython.egg-info/dependency_links.txt
+swcregistrypython.egg-info/requires.txt
+swcregistrypython.egg-info/top_level.txt

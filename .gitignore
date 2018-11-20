@@ -17,3 +17,4 @@ requests.egg-info/
 *.egg
 env/
 dist
+swcregistrypython.egg-info/

@@ -3,59 +3,91 @@ import requests
 import json
 
 
-class SWC:
-    def __init__(self, swc_id):
-        self.swc_id = swc_id
-        self.path_file_content = os.path.join(os.path.dirname(__file__),'swc-definition.json')
+class Singleton(type):
+    _instances = {}
 
-    @property
-    def get_content_by_file(self):
-        with open(self.path_file_content, 'r') as f:
-            response = json.load(f)
-        return response
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
 
-    @property
-    def get_last_version(self):
+
+class SWCRegistry(object, metaclass=Singleton):
+    """
+    Registry class takes care of loading and downloading the swc registry
+    """
+    def __init__(self):
+        self._content = None
+
+    @staticmethod
+    def _get_latest_version():
         try:
-            url = ('https://raw.githubusercontent.com/SmartContractSecurity/SWC-registry/master/export/swc-definition.json')
+            url = ('https://raw.githubusercontent.com/SmartContractSecurity/SWC-registry/master/export/swc-definition'
+                   '.json')
             response = requests.get(url).json()
-            with open(self.path_file_content, 'w') as outputfile:
-                json.dump(response, outputfile)
+            return response
         except requests.exceptions.RequestException:
-            response = self.get_content_by_file
-        return "swc-definition.json - updated"
+            return None
+
+    def _load_from_file(self):
+        path_file_content = os.path.join(os.path.dirname(__file__), 'swc-definition.json')
+        with open(path_file_content, 'r') as f:
+            self._content = json.load(f)
+
+    def update(self):
+        self._content = SWCRegistry._get_latest_version()
 
     @property
     def content(self):
-        entries = self.get_content_by_file
+        if self._content is None:
+            self._load_from_file()
+        return self._content
+
+
+class SWC:
+    """
+    SWC class contains information on an SWC entry
+
+    Example usage:
+        swc = SWC('SWC-100')
+        print(swc.title)
+    """
+    def __init__(self, swc_id, get_last=False):
+        self.swc_id = swc_id
+        if get_last:
+            SWCRegistry().update()
+
+    @property
+    def _swc_content(self):
+        return SWCRegistry().content
+
+    @property
+    def _content(self):
+        entries = self._swc_content
         current_entry = entries.get(self.swc_id, {})
         content = current_entry.get('content', {})
         return content
 
-    @content.setter
-    def content(self, value):
-        self._content = value
-
     @property
-    def title(self):
-        content = self.content
+    def title(self) -> str:
+        content = self._content
         title = content.get('Title', {})
         return title
 
     @property
-    def relationships(self):
-        content = self.content
+    def relationships(self) -> str:
+        content = self._content
         relationships = content.get('Relationships', {})
         return relationships
 
     @property
-    def description(self):
-        content = self.content
+    def description(self) -> str:
+        content = self._content
         description = content.get('Description', {})
         return description
 
     @property
-    def remediation(self):
-        content = self.content
+    def remediation(self) -> str:
+        content = self._content
         remediation = content.get('Remediation', {})
         return remediation

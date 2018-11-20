@@ -1,4 +1,5 @@
 import setuptools
+
 setuptools.setup(
     name="swcregistrypython",
     version="1.0",
@@ -18,4 +19,6 @@ setuptools.setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4'
     ],
+    setup_requires=["pytest-runner"],
+    tests_require=["pytest"]
 )

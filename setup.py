@@ -8,6 +8,7 @@ setuptools.setup(
     description="An package to get the required swc definition fields.",
     long_description=open('README.rst').read(),
     packages=['swcregistrypython'],
+    include_package_data = True,
     install_requires=[
         'requests==2.20.1',
       ],

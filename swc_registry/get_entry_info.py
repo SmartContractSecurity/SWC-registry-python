@@ -71,23 +71,23 @@ class SWC:
     @property
     def title(self) -> str:
         content = self._content
-        title = content.get('Title', {})
+        title = content.get('Title', '')
         return title
 
     @property
     def relationships(self) -> str:
         content = self._content
-        relationships = content.get('Relationships', {})
+        relationships = content.get('Relationships', '')
         return relationships
 
     @property
     def description(self) -> str:
         content = self._content
-        description = content.get('Description', {})
+        description = content.get('Description', '')
         return description
 
     @property
     def remediation(self) -> str:
         content = self._content
-        remediation = content.get('Remediation', {})
+        remediation = content.get('Remediation', '')
         return remediation

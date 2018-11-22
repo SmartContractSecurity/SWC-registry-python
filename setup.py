@@ -2,11 +2,11 @@ import setuptools
 
 setuptools.setup(
     name="swc-registry",
-    version="1.0",
+    version="0.0.2",
     url="https://github.com/SmartContractSecurity/SWC-registry-python",
     author="SmartContractSecurity",
     author_email="ersul4ik@gmail.com",
-    description="An package to get the required swc definition fields.",
+    description="Python library for accessing SWC-registry content.",
     long_description=open('README.rst').read(),
     packages=['swc_registry'],
     include_package_data = True,

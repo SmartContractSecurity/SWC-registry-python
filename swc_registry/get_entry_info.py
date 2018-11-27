@@ -3,7 +3,7 @@ import requests
 import json
 
 
-class SWCDoesNotExist(Exception):
+class SWCException(Exception):
     pass
 
 
@@ -70,7 +70,7 @@ class SWC:
         entries = self._swc_content
         current_entry = entries.get(self.swc_id)
         if not current_entry:
-            raise SWCDoesNotExist('SWC does not exist')
+            raise SWCException('SWC with ID {} does not exist'.format(self.swc_id))
         content = current_entry.get('content', {})
         return content
 

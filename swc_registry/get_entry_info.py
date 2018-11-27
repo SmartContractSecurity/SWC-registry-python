@@ -47,6 +47,9 @@ class SWCRegistry(object, metaclass=Singleton):
             self._load_from_file()
         return self._content
 
+    def __repr__(self):
+        return "<SWCRegistry with {} entries>".format(len(self.content.keys()))
+
 
 class SWC:
     """
@@ -97,3 +100,6 @@ class SWC:
         content = self._content
         remediation = content.get('Remediation', '')
         return remediation
+
+    def __repr__(self):
+        return "<SWC swc_id={0.swc_id} title={0.title}>".format(self)

@@ -3,6 +3,10 @@ import requests
 import json
 
 
+class SWCDoesNotExist(Exception):
+    pass
+
+
 class Singleton(type):
     _instances = {}
 
@@ -66,8 +70,7 @@ class SWC:
         entries = self._swc_content
         current_entry = entries.get(self.swc_id, None)
         if current_entry is None:
-            print("The content by entered id is not found")
-            return {}
+            raise SWCDoesNotExist('SWC does not exist')
         content = current_entry.get('content', {})
         return content
 

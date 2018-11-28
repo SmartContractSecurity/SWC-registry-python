@@ -14,9 +14,7 @@ jobs:
   deploy:
     docker:
       - image: python:3.5
-    filters:
-      branches:
-        only: master
+    
     steps:
       - checkout
       - run:
@@ -45,5 +43,8 @@ workflows:
     jobs:
       - test
       - deploy:
+          filters:
+            branches:
+              only: master
           requires:
               - test

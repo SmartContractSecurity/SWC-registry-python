@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build_test:
     docker:
       - image: python:3.5
     steps:
@@ -38,5 +38,9 @@ jobs:
           name: upload to pypi
           command: |
             twine upload dist/*
-
-
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build_test
+      - deploy

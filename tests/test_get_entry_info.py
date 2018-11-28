@@ -3,8 +3,8 @@ import json
 import os
 
 from unittest.mock import MagicMock
-from get_entry_info import SWC
-from get_entry_info import SWCRegistry
+from swc_registry.get_entry_info import SWC
+from swc_registry.get_entry_info import SWCRegistry
 
 
 class TestMethods(unittest.TestCase):

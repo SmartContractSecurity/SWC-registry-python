@@ -3,14 +3,14 @@ import json
 import os
 
 from unittest.mock import MagicMock
-from swc_registry import SWC
-from swc_registry.get_entry_info import SWCRegistry
+from get_entry_info import SWC
+from get_entry_info import SWCRegistry
 
 
 class TestMethods(unittest.TestCase):
     def setUp(self):
         with open(
-            os.path.dirname(__file__) + "/../swc_registry/swc-definition.json"
+            os.path.dirname(__file__) + "./swc-definition.json"
         ) as f:
             self.object = json.load(f)
         self.swc = SWC("SWC-100")

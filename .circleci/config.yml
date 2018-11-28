@@ -31,10 +31,6 @@ jobs:
             echo -e "username = ersul4ik" >> ~/.pypirc
             echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
       - run:
-          name: create packages
-          command: |
-            make package
-      - run:
           name: upload to pypi
           command: |
             twine upload dist/*

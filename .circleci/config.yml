@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build_test:
+  test:
     docker:
       - image: python:3.5
     steps:
@@ -12,14 +12,10 @@ jobs:
               pip install -r ../requirements.txt
               pytest ../tests/
   deploy:
-    requires:
-      - build
     docker:
       - image: python:3.5
     steps:
       - checkout
-      - restore_cache:
-          key: v1-dependency-cache-{{ checksum "setup.py" }}
       - run:
           name: verify git tag vs. version
           command: |
@@ -42,7 +38,9 @@ jobs:
             twine upload dist/*
 workflows:
   version: 2
-  build_and_test:
+  build-test-and-deploy:
     jobs:
-      - build_test
-      - deploy
+      - test
+      - deploy:
+        requires:
+            - test

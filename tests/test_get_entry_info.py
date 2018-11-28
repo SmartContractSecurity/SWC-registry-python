@@ -3,7 +3,7 @@ import json
 import os
 
 from unittest.mock import MagicMock
-from swc_registry import SWC
+from swc_registry.get_entry_info import SWC
 from swc_registry.get_entry_info import SWCRegistry
 
 

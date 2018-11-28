@@ -10,7 +10,7 @@ setuptools.setup(
     long_description=open("README.rst").read(),
     packages=["swc_registry"],
     include_package_data=True,
-    install_requires=["requests==2.20.1"],
+    install_requires=["requests==2.20.1", "pytest"],
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",

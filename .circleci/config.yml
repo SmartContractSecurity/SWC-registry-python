@@ -31,6 +31,11 @@ jobs:
             echo -e "username = ersul4ik" >> ~/.pypirc
             echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
       - run:
+          name: create packages
+          command: |
+            pip install -r requirements.txt
+            python setup.py sdist bdist_wheel
+      - run:
           name: upload to pypi
           command: |
             pip install -r requirements.txt

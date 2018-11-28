@@ -33,6 +33,7 @@ jobs:
       - run:
           name: upload to pypi
           command: |
+            pip install -r requirements.txt
             twine upload dist/*
 workflows:
   version: 2

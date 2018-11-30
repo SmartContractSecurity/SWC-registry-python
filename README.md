@@ -1,4 +1,4 @@
-# The Golang SWC Registry Library
+# The Python SWC Registry Library
 
 
 [![CircleCI](https://circleci.com/gh/SmartContractSecurity/SWC-registry-python.svg?style=svg)](https://circleci.com/gh/SmartContractSecurity/SWC-registry-python)

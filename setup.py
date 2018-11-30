@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-:copyright: (c) 2017 by Lev Lazinskiy
-:license: MIT, see LICENSE for more details.
-"""
+
 import os
 import sys
 

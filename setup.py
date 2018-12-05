@@ -13,7 +13,7 @@ from setuptools import setup
 from setuptools.command.install import install
 
 # circleci.py version
-VERSION = "0.0.4"
+VERSION = "0.0.5"
 
 class VerifyVersionCommand(install):
     """Custom command to verify that the git tag matches our version"""
@@ -36,6 +36,7 @@ setup(
     author_email="ersul4ik@gmail.com",
     description="Python library for accessing SWC-registry content.",
     long_description=open("README.md").read(),
+    long_description_content_type='text/markdown',
     packages=["swc_registry"],
     include_package_data=True,
     install_requires=["requests==2.20.1"],

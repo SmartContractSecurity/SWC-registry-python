@@ -7,7 +7,12 @@ from setuptools import setup
 from setuptools.command.install import install
 
 # circleci.py version
-VERSION = "0.0.5"
+VERSION = "0.0.6"
+
+from os import path
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
 class VerifyVersionCommand(install):
     """Custom command to verify that the git tag matches our version"""
@@ -29,8 +34,8 @@ setup(
     author="SmartContractSecurity",
     author_email="ersul4ik@gmail.com",
     description="Python library for accessing SWC-registry content.",
-    long_description=open("README.md").read(),
-    long_description_content_type='text/markdown',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     packages=["swc_registry"],
     include_package_data=True,
     install_requires=["requests==2.20.1"],

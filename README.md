@@ -1,7 +1,7 @@
 # The Python SWC Registry Library
 
 
-[![CircleCI](https://circleci.com/gh/ersul4ik/SWC-registry-python.svg?style=svg)](https://circleci.com/gh/SmartContractSecurity/SWC-registry-python)
+[![CircleCI](https://circleci.com/gh/SmartContractSecurity/SWC-registry-python.svg?style=svg)](https://circleci.com/gh/SmartContractSecurity/SWC-registry-python)	
 
 ## Description
 Python library for accessing SWC-registry content.

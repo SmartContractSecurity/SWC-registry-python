@@ -2,6 +2,8 @@
 
 
 [![CircleCI](https://circleci.com/gh/SmartContractSecurity/SWC-registry-python.svg?style=svg)](https://circleci.com/gh/SmartContractSecurity/SWC-registry-python)	
+[![Documentation Status](https://readthedocs.org/projects/swc-registry-python/badge/?version=latest)](https://swc-registry-python.readthedocs.io/en/latest/?badge=latest)
+
 
 ## Description
 Python library for accessing SWC-registry content.

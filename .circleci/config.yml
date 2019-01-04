@@ -17,25 +17,28 @@ jobs:
     steps:
       - checkout
       - run:
-          name: verify git tag vs. version
-          command: |
-            python setup.py verify
-      - run:
           name: init .pypirc
           command: |
             echo -e "[pypi]" >> ~/.pypirc
-            echo -e "username = ersul4ik" >> ~/.pypirc
+            echo -e "username = $PYPI_USERNAME" >> ~/.pypirc
             echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
       - run:
           name: create packages
           command: |
             pip install -r requirements.txt
+            bumpversion patch
             python setup.py sdist bdist_wheel
       - run:
           name: upload to pypi
           command: |
             pip install -r requirements.txt
             twine upload dist/*
+      - run:
+          name: Push changes
+          command: |
+              git config --global user.email "$GIT_USER_EMAIL"
+              git config --global user.name "$GIT_USER"
+              git add . && git commit -am "Changed the package version [skip ci]" && git push -q ${REPO_URL}
 workflows:
   version: 2
   build-test-and-deploy:

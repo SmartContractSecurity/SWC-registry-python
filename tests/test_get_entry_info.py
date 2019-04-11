@@ -10,7 +10,7 @@ from swc_registry.get_entry_info import SWCRegistry
 class TestMethods(unittest.TestCase):
     def setUp(self):
         with open(
-            os.path.dirname(__file__) + "/../swc_registry/swc-definition.json"
+            os.path.dirname(__file__) + "/../swc_registry/swc-definition.json", encoding="utf-8"
         ) as f:
             self.object = json.load(f)
         self.swc = SWC("SWC-100")

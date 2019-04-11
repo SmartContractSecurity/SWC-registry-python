@@ -40,7 +40,7 @@ class SWCRegistry(object, metaclass=Singleton):
         path_file_content = os.path.join(
             os.path.dirname(__file__), "swc-definition.json"
         )
-        with open(path_file_content, "r") as f:
+        with open(path_file_content, "r", encoding="utf-8") as f:
             self._content = json.load(f)
 
     def update(self):

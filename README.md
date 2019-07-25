@@ -33,7 +33,7 @@ On first use of the SWC methods, the SWC registry is initialized from file (swc-
 ```python
 from swc_registry import SWC
 
-swc = SWC('SWC-100', True)
+swc = SWC('SWC-100', get_last=True)
 print(swc.title)
 
 // Function Default Visibility

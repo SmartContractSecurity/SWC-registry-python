@@ -18,7 +18,7 @@ setup(
     long_description_content_type="text/markdown",
     packages=["swc_registry"],
     include_package_data=True,
-    install_requires=["requests==2.20.1"],
+    install_requires=["requests==2.31.0"],
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",

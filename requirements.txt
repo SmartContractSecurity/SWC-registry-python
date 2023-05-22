@@ -1,4 +1,4 @@
-requests==2.20.1
+requests==2.31.0
 pytest==4.0.1
 twine==1.12.1
 bumpversion==0.5.3
